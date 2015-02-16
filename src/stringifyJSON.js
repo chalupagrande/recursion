@@ -5,22 +5,38 @@
 
 var stringifyJSON = function(obj) {
 	var result = '';
-	if(typeof(obj) !== 'object'){
-		result = "" + obj + "";	
+	if(typeof(obj) === 'undefined' || typeof(obj) === 'function'){
+		return undefined;
+	}else if(typeof(obj) ==='string'){
+		result = obj; 
+	}else if(typeof(obj) !== 'object'){
+		return result += _.escape(obj);
 	}else if( obj === null){
-		result += 'null';
+		return result += 'null';
 	}else if(Array.isArray(obj)){
 		for(var i = 0; i < obj.length; i++){
+			if(i>0){
+			result +=',';	
+			}
 			result += stringifyJSON(obj[i]);
 		}
-		result += '['+result+']';
+		return result = '['+result+']';
 	}else if(typeof(obj) === 'object' && !Array.isArray(obj)){
+		var count = 0;
 		for(var j in obj){
-			result += stringifyJSON(i) + ':' + stringifyJSON(obj[i]) + ',' ;
+			if(count>0){
+				result +=',';	
+			}
+			var key = stringifyJSON(j);
+			var value = stringifyJSON(obj[j]);
+			if(key !== undefined && value !== undefined){
+				result += key+":"+value;
+				count++;
+			}
 		}
-		result += '{'+result+'}';
+		return result = '{'+result+'}';
 	}
-	return result;
-
+	
+	return '"'+result+'"';
   	
 };
