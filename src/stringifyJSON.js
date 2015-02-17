@@ -40,3 +40,18 @@ var stringifyJSON = function(obj) {
 	return '"'+result+'"';
   	
 };
+
+/* -----------------------------
+ My implementation of the Underscore.js functions I used
+ ------------------------------- */
+
+// _.escape = function(obj){
+// 	if(obj === undefined || obj === null){
+// 		return "";
+// 	}
+// 	else if(typeof(obj) !== 'string'){
+// 		obj = "" + obj + "";
+// 	}
+// 	return obj;
+// }
+

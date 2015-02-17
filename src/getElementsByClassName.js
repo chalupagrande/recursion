@@ -26,3 +26,53 @@ var getElementsByClassName = function(className, element){
 	return _.flatten(results);
 	
 };
+
+/* --------------------------
+Here is my own solutions for the Underscore.js functions I used. 
+--------------------------*/
+
+// _.flatten = function(nestedArray, result) {
+//     if(result === undefined){
+//       result = [];
+//     }
+//     for(var i = 0; i < nestedArray.length;i++){
+//       if (!Array.isArray(nestedArray[i])){
+//         result.push(nestedArray[i]);
+//       }else if(Array.isArray(nestedArray[i])){
+//         result = _.flatten(nestedArray[i],result);
+//       }
+//     }
+//     return result;
+//   };
+
+/* -----------------------------
+ Contains was done for me, but I re-did it a different way using _.each
+--------------------------------- */
+
+// _.contains = function(collection, target) {
+
+//     var wasFound = false;
+//     _.each(collection,function(item){
+//       if(item === target){
+//         wasFound = true;
+//       }
+//     });
+//     return wasFound;
+
+//  };
+
+/* -----------------------------
+ Here is my _.each function used in the _.contains() function
+--------------------------------- */
+
+// _.each = function(collection, iterator) {
+//     if (Array.isArray(collection)){
+//       for(var i = 0; i < collection.length; i++){
+//         iterator(collection[i], i, collection);
+//       }
+//     }else{
+//       for(var j in collection){
+//         iterator(collection[j], j, collection);
+//       }
+//     }
+//   };
